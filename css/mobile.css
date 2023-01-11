@@ -1,0 +1,56 @@
+@media screen and (max-width: 576px) {
+  #nav-bar a {
+    display: block;
+    border: none;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  #nav-bar a.order-5 {
+    border: none;
+  }
+
+  #nav-bar .nav-middle {
+    display: none;
+  }
+
+  #job-info .grid {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "exp"
+      "skills"
+      "act"
+      "edu"
+      "lang"
+      "hobbies";
+  }
+
+  .cert-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .border::before {
+    content: none;
+  }
+
+  .border::after {
+    bottom: 0;
+    width: 100%;
+  }
+
+  .border-sm-bottom {
+    border-bottom: 1px solid orangered;
+  }
+
+  .pj-container {
+    grid-template-columns: 1fr;
+  }
+
+  table tr td {
+    min-width: 0;
+  }
+
+  #footer ul {
+    max-width: 300px;
+  }
+}

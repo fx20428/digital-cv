@@ -1,0 +1,276 @@
+:root {
+  --text-color: #333;
+  --link-color: rgb(57, 92, 210);
+  --border-color: #ccc;
+}
+
+body {
+  color: var(--text-color);
+}
+
+.container {
+  max-width: 1170px;
+}
+
+.card {
+  overflow: hidden;
+}
+
+#banner {
+  max-width: 100%;
+  height: 50vh;
+  /* hide the bottom of the image */
+  background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url("../images/banner.jpg");
+  background-size: cover;
+  background-position: center;
+  background-position-y: top;
+}
+
+/* avatar */
+.avatar {
+  height: 130px;
+}
+
+.nav-middle {
+  width: 180px;
+}
+
+.avatar-container {
+  width: 130px;
+  height: 130px;
+  overflow: hidden;
+  border: 7px solid white;
+  outline: 1px solid lightgray;
+  border-radius: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Nav link */
+#nav-bar a {
+  text-decoration: none;
+  color: var(--link-color);
+  border-left: 1px solid var(--border-color);
+}
+
+a.order-5,
+a.order-2 {
+  border-right: 1px solid var(--border-color);
+}
+
+/* About */
+.bg-grey {
+  background-color: rgb(222, 222, 222);
+}
+
+#about ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+/* Experience */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  grid-template-areas:
+    "exp skills lang"
+    "act edu hobbies";
+}
+
+.current {
+  display: inline-block;
+  width: fit-content;
+  height: fit-content;
+  background-color: rgb(136, 136, 237);
+  color: white;
+  padding: 2px 7px;
+  border-radius: 10px;
+}
+
+/* Place the card into correct positions */
+#exp {
+  grid-area: exp;
+}
+
+#skills {
+  grid-area: skills;
+}
+
+#act {
+  grid-area: act;
+}
+
+#lang {
+  grid-area: lang;
+}
+
+#edu {
+  grid-area: edu;
+}
+
+#hobbies {
+  grid-area: hobbies;
+}
+
+#job-info ul {
+  margin-left: -15px;
+}
+
+.hobbies-icon-container {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  border: 1px solid var(--border-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Level in languages and skills */
+.skill-level {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 70%;
+  height: 2px;
+  gap: 10px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.skill-level div {
+  background-color: rgb(224, 208, 208);
+}
+
+.skill-level .active {
+  background-color: rgb(46, 46, 183);
+}
+
+/* Certificate */
+.cert-img {
+  width: 30vh;
+}
+
+.cert-content {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.border {
+  position: relative;
+}
+
+.border::after {
+  content: "";
+  width: 210%;
+  height: 1px;
+  background-color: orangered;
+  position: absolute;
+  bottom: -16px;
+}
+
+.border::before {
+  content: "";
+  width: 1px;
+  height: 100%;
+  background-color: orangered;
+  position: absolute;
+  right: -16px;
+}
+
+.slash-before::before {
+  content: "- ";
+}
+
+/* PROJECTS */
+
+.pj-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 20px;
+}
+
+.pj-name {
+  font-weight: 500;
+}
+
+.pj-img {
+  width: 100%;
+}
+
+.job-title {
+  display: flex;
+  gap: 15px;
+}
+
+table tr td {
+  min-width: 100px;
+  vertical-align: top;
+}
+
+.justify-text {
+  text-align: justify;
+}
+
+.pj-container .content {
+  border: 1px solid lightgray;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+.border-top {
+  border-top: 1px solid lightgray;
+}
+
+.pj-name,
+.job-title,
+td {
+  padding: 10px;
+}
+
+.icon {
+  color: var(--link-color);
+}
+
+#footer ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+#footer .icon {
+  font-size: 1.5rem;
+}
+
+#footer a {
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+.hide {
+  display: none !important;
+}
+
+.card-body {
+  position: relative;
+  margin-bottom: 25px;
+}
+
+.btn-view {
+  position: absolute;
+  border-radius: 10px;
+  border: none;
+  background-color: bisque;
+}

@@ -1,0 +1,29 @@
+@media screen and (max-width: 992px) {
+  .nav-middle {
+    width: 50px;
+  }
+
+  #job-info .grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas:
+      "exp act"
+      "skills edu"
+      "lang hobbies";
+  }
+
+  .cert-img {
+    width: 100%;
+  }
+
+  .cert-title {
+    margin-top: 20px;
+  }
+
+  table tr td {
+    min-width: 0;
+  }
+
+  #footer ul {
+    max-width: 400px;
+  }
+}
