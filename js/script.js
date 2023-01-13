@@ -4,9 +4,7 @@ const formText = document.querySelector(".form-text");
 const emailInput = document.querySelector("#email");
 const btnSubmit = document.querySelector(".btn");
 const info = document.querySelector(".info");
-const jobInfoCards = document.querySelectorAll("#job-info .card");
-const btnViewMore = document.querySelectorAll(".btn-view-more");
-const btnViewLess = document.querySelectorAll(".btn-view-less");
+const jobInfo = document.querySelectorAll(".card");
 const viewState = [0, 0, 0, 0, 0, 0];
 
 // Feature: Hide Personal Infomation
@@ -33,51 +31,46 @@ emailInput.addEventListener("focus", () => {
 });
 
 // Feature: Hide Exprerience Infomations
-btnViewMore.forEach((btn, i) => {
-  btn.addEventListener("click", (e) => {
-    switchViewState(i);
+// Using DOM Traverse
+jobInfo.forEach((infoCard, i) => {
+  const infoBody = infoCard.firstElementChild;
+  const children = infoBody.children;
+  // select the element that we need to hide  
+  const infoText = children[1];
+  // use "mouseenter" instead of "mouseover" event
+  // because "mouseover" will be triggered on every child elements,
+  // making it harder for targeting the element that we need
+  infoCard.addEventListener("mouseenter", () => {
+    const viewBtn = document.createElement("button");
+    viewBtn.classList.add("btn-view");
+    changeButtonContent(viewState[i], viewBtn);
+    if (!(infoBody.lastElementChild instanceof HTMLButtonElement))
+      infoBody.appendChild(viewBtn);
+    viewBtn.addEventListener("click", (e) => {
+      // toggle view state
+      viewState[i] = viewState[i] === 0 ? 1 : 0;
+      infoText.classList.toggle("hide");
+      changeButtonContent(viewState[i], viewBtn);
+    });
+  });
+  
+  // remove the button when the mouse pointer leaves
+  // the selected element.  
+  infoCard.addEventListener("mouseleave", () => {
+    infoBody.removeChild(infoBody.lastElementChild);
   });
 });
 
-btnViewLess.forEach((btn, i) => {
-  btn.addEventListener("click", (e) => {
-    switchViewState(i);
-  });
-});
-
-// function declarations
-jobInfoCards.forEach((card, i) => {
-  card.addEventListener("mouseover", (e) => {
-    if (isShowContent(i)) hideViewMoreAndShowViewLess(i);
-    else showViewMoreAndHideViewLess(i);
-  });
-  card.addEventListener("mouseleave", (e) => {
-    hideBoth(i);
-  });
-});
-
-function switchViewState(i) {
-  viewState[i] = viewState[i] === 0 ? 1 : 0;
-  document.querySelector(`.job-info-${i}`).classList.toggle("hide");
-  if (isShowContent(i)) hideViewMoreAndShowViewLess(i);
-  else showViewMoreAndHideViewLess(i);
+// change the content of the button based on whether the card content 
+// is showing or not
+// I tried to use "createElement" to create the icon on the fly, then
+// assigns appropriate class to it before appending it to the button but
+// it seems like the performance is not good (at least on my laptop), that why
+// I decided to use "innerHTML".
+function changeButtonContent(viewState, btn) {
+  if (viewState === 0)
+    btn.innerHTML = '<i class="bi bi-caret-down-fill"></i> Show more';
+  else btn.innerHTML = '<i class="bi bi-caret-up-fill"></i> Show less';
 }
 
-function isShowContent(i) {
-  return viewState[i] !== 0;
-}
 
-function hideViewMoreAndShowViewLess(i) {
-  document.querySelector(`.view-more-${i}`).classList.add("hide");
-  document.querySelector(`.view-less-${i}`).classList.remove("hide");
-}
-
-function showViewMoreAndHideViewLess(i) {
-  document.querySelector(`.view-more-${i}`).classList.remove("hide");
-  document.querySelector(`.view-less-${i}`).classList.add("hide");
-}
-
-function hideBoth(i) {
-  document.querySelector(`.view-more-${i}`).classList.add("hide");
-  document.querySelector(`.view-less-${i}`).classList.add("hide");
-}
