@@ -37,10 +37,7 @@ jobInfo.forEach((infoCard, i) => {
   const children = infoBody.children;
   // select the element that we need to hide  
   const infoText = children[1];
-  // use "mouseenter" instead of "mouseover" event
-  // because "mouseover" will be triggered on every child elements,
-  // making it harder for targeting the element that we need
-  infoCard.addEventListener("mouseenter", () => {
+  infoCard.addEventListener("mouseover", () => {
     const viewBtn = document.createElement("button");
     viewBtn.classList.add("btn-view");
     changeButtonContent(viewState[i], viewBtn);
